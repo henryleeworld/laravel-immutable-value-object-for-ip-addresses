@@ -11,12 +11,12 @@ class IpAddressController extends Controller
     {
         try {
             $ip = IPv4::factory(request()->ip());
-            echo '有效的 IP 位址：' . request()->ip()  . '。'. PHP_EOL;
+            echo __('Valid IP address:') . request()->ip()  . __('.') . PHP_EOL;
         } catch (Exception\InvalidIpAddressException $e) {
-            exit('提供的 IP 地址無效！');
+            exit(__('The IP address provided is invalid!'));
         }
         if (!$ip->isPrivateUse()) {
-            echo request()->ip() . ' ' . '為非私人使用。';
+            echo request()->ip() . ' ' . __('is for non-private use.') . PHP_EOL;
         }
     }
 }
